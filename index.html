@@ -1,42 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MGOCSM Tughlakabad</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="theme-color" content="#1a0a00"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="MGOCSM"/>
+<title>MGOCSM Tughlakabad</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="icon.jpg"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a0a00;font-family:Georgia,serif;color:#f5e6c8;min-height:100vh}
+#root{min-height:100vh}
+</style>
 </head>
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <div class="header-title">
-                <h1>† MGOCSM Tughlakabad</h1>
-                <p class="viewer-tag">V I E W E R</p>
-            </div>
-            <div class="logout-icon">
-                <span class="icon">➔</span>
-            </div>
-        </header>
-
-        <nav class="nav-tabs">
-            <button class="nav-tab" data-section="home">† Home</button>
-            <button class="nav-tab active" data-section="members">👥 Members</button>
-            <button class="nav-tab" data-section="calendar">📅 Calendar</button>
-            <button class="nav-tab" data-section="meetings">📋 Meetings</button>
-        </nav>
-
-        <main class="content-area">
-            <section id="members" class="content-section">
-                <h2 id="total-count" class="section-title">Members (--)</h2>
-                
-                <div id="members-list" class="members-container">
-                    <p style="color: #bfa07a; text-align: center;">Loading members...</p>
-                </div>
-            </section>
-
-            </main>
-    </div>
-
-    <script type="module" src="app.js"></script>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="app.js" type="text/babel"></script>
 </body>
 </html>
