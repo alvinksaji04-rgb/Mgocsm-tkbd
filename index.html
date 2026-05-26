@@ -18,6 +18,26 @@ body{background:#1a0a00;font-family:Georgia,serif;color:#f5e6c8;min-height:100vh
 </head>
 <body>
 <div id="root"></div>
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAN2kZlDunLEqxsJLZtmbToz-HbipgFFtE",
+    authDomain: "mgocsm-tkbd.firebaseapp.com",
+    databaseURL: "https://mgocsm-tkbd-default-rtdb.firebaseio.com",
+    projectId: "mgocsm-tkbd",
+    storageBucket: "mgocsm-tkbd.firebasestorage.app",
+    messagingSenderId: "902362343501",
+    appId: "1:902362343501:web:9f05a260daff0fb63f5404",
+    measurementId: "G-QJVFQPG5F4"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  window.__firebase = { db, ref, onValue, set };
+</script>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
