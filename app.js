@@ -20,6 +20,16 @@ const TENURE_MONTHS = [
   { key: "mar", label: "Mar" },
 ];
 
+// Event types
+const EVENT_TYPES = [
+  { key: "meeting",   label: "Meeting",   icon: "🔵", color: "rgba(100,150,255,0.15)", border: "rgba(100,150,255,0.4)" },
+  { key: "worship",   label: "Worship",   icon: "✝️",  color: "rgba(255,150,100,0.15)", border: "rgba(255,150,100,0.4)" },
+  { key: "study",     label: "Study",     icon: "📖", color: "rgba(200,100,255,0.15)", border: "rgba(200,100,255,0.4)" },
+  { key: "service",   label: "Service",   icon: "🤝", color: "rgba(255,200,50,0.15)",  border: "rgba(255,200,50,0.4)"  },
+  { key: "initiative",label: "Initiative",icon: "🟢", color: "rgba(100,220,100,0.12)", border: "rgba(100,220,100,0.3)" },
+];
+function getEventType(key) { return EVENT_TYPES.find(e => e.key === key) || EVENT_TYPES[0]; }
+
 // ─── FIREBASE HELPERS ─────────────────────────────────────────────────────────
 function useFirebase() {
   const [data, setData] = useState(null);
@@ -191,10 +201,10 @@ const S = {
   calGrid: { display: "grid", gridTemplateColumns: "repeat(7,1fr)", gap: 2, marginTop: 8 },
   calDay: { textAlign: "center", fontSize: 10, color: "#a07840", padding: "4px 0" },
   calCell: (hasEvent, isToday, eventType) => ({
-    textAlign: "center", padding: "6px 2px", borderRadius: 6, fontSize: 12, cursor: hasEvent ? "pointer" : "default",
-    background: isToday ? "rgba(200,135,10,0.2)" : hasEvent ? (eventType === "meeting" ? "rgba(100,150,255,0.15)" : "rgba(100,220,100,0.12)") : "transparent",
+    textAlign: "center", padding: "6px 2px", borderRadius: 6, fontSize: 12, cursor: (hasEvent || isToday) ? "pointer" : "default",
+    background: isToday ? "rgba(200,135,10,0.2)" : hasEvent ? getEventType(eventType).color : "transparent",
     color: isToday ? "#f0c060" : hasEvent ? "#f5e6c8" : "#a07840",
-    border: isToday ? "1px solid rgba(200,135,10,0.5)" : hasEvent ? "1px solid rgba(150,150,255,0.3)" : "1px solid transparent",
+    border: isToday ? "1px solid rgba(200,135,10,0.5)" : hasEvent ? `1px solid ${getEventType(eventType).border}` : "1px solid transparent",
     fontWeight: hasEvent ? "bold" : "normal",
   }),
 
@@ -443,6 +453,49 @@ function HomeTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
           </div>
         ))}
       </div>
+
+      {/* Upcoming Events */}
+      <UpcomingEvents tenure={tenure} />
+    </>
+  );
+}
+
+function UpcomingEvents({ tenure }) {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const events = (tenure?.events || [])
+    .filter(e => new Date(e.date) >= today)
+    .sort((a,b) => new Date(a.date) - new Date(b.date))
+    .slice(0, 5);
+
+  if (events.length === 0) return null;
+
+  return (
+    <>
+      <div style={S.sectionTitle}>📅 Upcoming Events</div>
+      {events.map(ev => {
+        const et = getEventType(ev.type);
+        const evDate = new Date(ev.date);
+        const diffDays = Math.ceil((evDate - today) / (1000*60*60*24));
+        const diffLabel = diffDays === 0 ? "Today!" : diffDays === 1 ? "Tomorrow" : `In ${diffDays} days`;
+        return (
+          <div key={ev.id} style={{ ...S.card, borderLeft: `3px solid ${et.border}`, padding: "12px 14px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 20 }}>{et.icon}</span>
+                <div>
+                  <div style={{ fontSize: 13, color: "#f5e6c8", fontWeight: "bold" }}>{ev.title}</div>
+                  <div style={{ fontSize: 11, color: "#a07840" }}>{formatDate(ev.date)}</div>
+                </div>
+              </div>
+              <span style={{ ...S.badge(diffDays === 0 ? "green" : "gold"), fontSize: 10, whiteSpace: "nowrap" }}>
+                {diffLabel}
+              </span>
+            </div>
+            {ev.brief && <div style={{ fontSize: 11, color: "#c8a060", marginTop: 6 }}>{ev.brief}</div>}
+          </div>
+        );
+      })}
     </>
   );
 }
@@ -749,15 +802,17 @@ function CalendarTab({ tenure, tenureKey, isEditor, upd, setModal }) {
             >
               {day}
               {dayEvents.length > 0 && <div style={{ fontSize: 8, marginTop: 1 }}>
-                {dayEvents.map(e => e.type === "meeting" ? "🔵" : "🟢").join("")}
+                {dayEvents.map(e => getEventType(e.type).icon).join("")}
               </div>}
             </div>
           );
         })}
       </div>
 
-      <div style={{ marginTop: 10, display: "flex", gap: 12, fontSize: 11, color: "#a07840" }}>
-        <span>🔵 Meeting</span><span>🟢 Initiative</span>
+      <div style={{ marginTop: 10, display: "flex", gap: 8, fontSize: 11, color: "#a07840", flexWrap: "wrap" }}>
+        {EVENT_TYPES.map(et => (
+          <span key={et.key}>{et.icon} {et.label}</span>
+        ))}
       </div>
 
       {selectedDay && (
@@ -771,18 +826,23 @@ function CalendarTab({ tenure, tenureKey, isEditor, upd, setModal }) {
             )}
           </div>
           {selectedEvents.length === 0 && <div style={{ color: "#a07840", fontSize: 12 }}>No events. {isEditor ? "Add one!" : ""}</div>}
-          {selectedEvents.map(ev => (
-            <div key={ev.id} style={{ borderTop: "1px solid rgba(200,135,10,0.1)", paddingTop: 8, marginTop: 8 }}>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <span style={S.badge(ev.type === "meeting" ? "gold" : "green")}>{ev.type === "meeting" ? "Meeting" : "Initiative"}</span>
-                {isEditor && <button style={S.smallBtn("red")} onClick={() => upd(d => {
-                  d.tenures[tenureKey].events = d.tenures[tenureKey].events.filter(e => e.id !== ev.id);
-                })}>{Icon.trash}</button>}
+          {selectedEvents.map(ev => {
+            const et = getEventType(ev.type);
+            return (
+              <div key={ev.id} style={{ borderTop: "1px solid rgba(200,135,10,0.1)", paddingTop: 8, marginTop: 8 }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                  <span style={{ ...S.badge("gold"), background: et.color, borderColor: et.border }}>
+                    {et.icon} {et.label}
+                  </span>
+                  {isEditor && <button style={S.smallBtn("red")} onClick={() => upd(d => {
+                    d.tenures[tenureKey].events = d.tenures[tenureKey].events.filter(e => e.id !== ev.id);
+                  })}>{Icon.trash}</button>}
+                </div>
+                <div style={{ fontSize: 14, color: "#f5e6c8", marginTop: 6, fontWeight: "bold" }}>{ev.title}</div>
+                {ev.brief && <div style={{ fontSize: 12, color: "#c8a060", marginTop: 4, whiteSpace: "pre-wrap" }}>{ev.brief}</div>}
               </div>
-              <div style={{ fontSize: 14, color: "#f5e6c8", marginTop: 6, fontWeight: "bold" }}>{ev.title}</div>
-              {ev.brief && <div style={{ fontSize: 12, color: "#c8a060", marginTop: 4, whiteSpace: "pre-wrap" }}>{ev.brief}</div>}
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </>
@@ -1061,9 +1121,14 @@ function AddEventModal({ close, upd, tenureKey, date }) {
   return (
     <ModalWrap title={`Add Event — ${formatDate(date)}`} close={close}>
       <label style={S.label}>Type</label>
-      <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
-        {["meeting", "initiative"].map(t => (
-          <button key={t} style={S.navBtn(type === t)} onClick={() => setType(t)}>{t === "meeting" ? "🔵 Meeting" : "🟢 Initiative"}</button>
+      <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }}>
+        {EVENT_TYPES.map(et => (
+          <button key={et.key} style={{
+            ...S.navBtn(type === et.key),
+            padding: "6px 10px", fontSize: 11,
+          }} onClick={() => setType(et.key)}>
+            {et.icon} {et.label}
+          </button>
         ))}
       </div>
       <label style={S.label}>Title *</label>
