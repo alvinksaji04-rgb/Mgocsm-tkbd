@@ -101,110 +101,110 @@ const Icon = {
 const S = {
   app: {
     minHeight: "100vh",
-    background: "linear-gradient(135deg, #1a0a00 0%, #2d1200 40%, #1a0a00 100%)",
+    background: "linear-gradient(135deg, #020810 0%, #071020 40%, #0d1a35 70%, #020810 100%)",
     fontFamily: "'Georgia', 'Times New Roman', serif",
-    color: "#f5e6c8",
+    color: "#e8f4fc",
     position: "relative",
     overflow: "hidden",
   },
   bgPattern: {
     position: "fixed", inset: 0, zIndex: 0,
-    backgroundImage: `radial-gradient(circle at 20% 20%, rgba(180,100,20,0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(180,100,20,0.08) 0%, transparent 50%)`,
+    backgroundImage: `radial-gradient(circle at 20% 20%, rgba(74,158,218,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(74,158,218,0.06) 0%, transparent 50%)`,
     pointerEvents: "none",
   },
   container: { maxWidth: 480, margin: "0 auto", padding: "0 16px", position: "relative", zIndex: 1 },
   loginWrap: { minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 24 },
-  logoCircle: { width: 90, height: 90, borderRadius: "50%", border: "3px solid #c8870a", overflow: "hidden", marginBottom: 12, background: "#fff" },
+  logoCircle: { width: 90, height: 90, borderRadius: "50%", border: "3px solid #4a9eda", overflow: "hidden", marginBottom: 12, background: "#fff" },
   logoImg: { width: "100%", height: "100%", objectFit: "contain" },
-  appTitle: { fontSize: 22, fontWeight: "bold", color: "#f0c060", textAlign: "center", letterSpacing: 1, marginBottom: 2 },
-  appSub: { fontSize: 13, color: "#c8a060", textAlign: "center", marginBottom: 6, letterSpacing: 2 },
-  appMotto: { fontSize: 11, color: "#a07840", textAlign: "center", marginBottom: 28, letterSpacing: 3, textTransform: "uppercase" },
-  loginCard: { background: "rgba(255,255,255,0.05)", border: "1px solid rgba(200,135,10,0.3)", borderRadius: 16, padding: 24, width: "100%", maxWidth: 340 },
+  appTitle: { fontSize: 22, fontWeight: "bold", color: "#a8d8f0", textAlign: "center", letterSpacing: 1, marginBottom: 2 },
+  appSub: { fontSize: 13, color: "#8bb8d4", textAlign: "center", marginBottom: 6, letterSpacing: 2 },
+  appMotto: { fontSize: 11, color: "#6b9ab8", textAlign: "center", marginBottom: 28, letterSpacing: 3, textTransform: "uppercase" },
+  loginCard: { background: "rgba(255,255,255,0.06)", border: "1px solid rgba(74,158,218,0.3)", borderRadius: 16, padding: 24, width: "100%", maxWidth: 340 },
   loginTabRow: { display: "flex", gap: 8, marginBottom: 20 },
   loginTab: (active) => ({
     flex: 1, padding: "8px 0", borderRadius: 8, border: "1px solid",
-    borderColor: active ? "#c8870a" : "rgba(200,135,10,0.2)",
-    background: active ? "rgba(200,135,10,0.2)" : "transparent",
-    color: active ? "#f0c060" : "#a07840", fontSize: 12, cursor: "pointer", fontFamily: "Georgia,serif",
+    borderColor: active ? "#4a9eda" : "rgba(74,158,218,0.2)",
+    background: active ? "rgba(74,158,218,0.2)" : "transparent",
+    color: active ? "#a8d8f0" : "#6b9ab8", fontSize: 12, cursor: "pointer", fontFamily: "Georgia,serif",
   }),
-  label: { fontSize: 12, color: "#a07840", marginBottom: 6, display: "block", letterSpacing: 1 },
+  label: { fontSize: 12, color: "#6b9ab8", marginBottom: 6, display: "block", letterSpacing: 1 },
   input: {
-    width: "100%", padding: "10px 12px", borderRadius: 8, border: "1px solid rgba(200,135,10,0.3)",
-    background: "rgba(0,0,0,0.3)", color: "#f5e6c8", fontSize: 14, fontFamily: "Georgia,serif",
+    width: "100%", padding: "10px 12px", borderRadius: 8, border: "1px solid rgba(74,158,218,0.3)",
+    background: "rgba(5,13,26,0.5)", color: "#e8f4fc", fontSize: 14, fontFamily: "Georgia,serif",
     outline: "none", boxSizing: "border-box", marginBottom: 14,
   },
   btn: (variant = "primary") => ({
     width: "100%", padding: "11px 0", borderRadius: 8, border: "none",
-    background: variant === "primary" ? "linear-gradient(135deg,#c8870a,#f0a820)" : "rgba(255,255,255,0.08)",
-    color: variant === "primary" ? "#1a0800" : "#f5e6c8",
+    background: variant === "primary" ? "linear-gradient(135deg,#2979c8,#4a9eda,#7ec8f0)" : "rgba(255,255,255,0.1)",
+    color: variant === "primary" ? "#050d1a" : "#e8f4fc",
     fontFamily: "Georgia,serif", fontSize: 14, fontWeight: "bold", cursor: "pointer", marginBottom: 8,
   }),
   err: { color: "#ff6b6b", fontSize: 12, marginBottom: 10, textAlign: "center" },
   topBar: {
-    background: "rgba(0,0,0,0.4)", borderBottom: "1px solid rgba(200,135,10,0.2)",
+    background: "rgba(5,13,26,0.7)", borderBottom: "1px solid rgba(74,158,218,0.2)",
     padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "space-between",
     position: "sticky", top: 0, zIndex: 100, backdropFilter: "blur(8px)",
   },
-  topTitle: { fontSize: 14, color: "#f0c060", fontWeight: "bold", letterSpacing: 0.5 },
-  topRole: { fontSize: 10, color: "#a07840", letterSpacing: 2 },
-  iconBtn: { background: "none", border: "none", color: "#a07840", cursor: "pointer", padding: 4, display: "flex", alignItems: "center" },
+  topTitle: { fontSize: 14, color: "#a8d8f0", fontWeight: "bold", letterSpacing: 0.5 },
+  topRole: { fontSize: 10, color: "#6b9ab8", letterSpacing: 2 },
+  iconBtn: { background: "none", border: "none", color: "#6b9ab8", cursor: "pointer", padding: 4, display: "flex", alignItems: "center" },
   nav: {
     display: "flex", gap: 4, padding: "10px 16px",
-    background: "rgba(0,0,0,0.2)", borderBottom: "1px solid rgba(200,135,10,0.1)", overflowX: "auto",
+    background: "rgba(5,13,26,0.4)", borderBottom: "1px solid rgba(74,158,218,0.1)", overflowX: "auto",
   },
   navBtn: (active) => ({
     display: "flex", alignItems: "center", gap: 6, padding: "7px 14px",
     borderRadius: 20, border: "1px solid",
-    borderColor: active ? "#c8870a" : "transparent",
-    background: active ? "rgba(200,135,10,0.15)" : "transparent",
-    color: active ? "#f0c060" : "#a07840", fontSize: 12, cursor: "pointer",
+    borderColor: active ? "#4a9eda" : "transparent",
+    background: active ? "rgba(74,158,218,0.15)" : "transparent",
+    color: active ? "#a8d8f0" : "#6b9ab8", fontSize: 12, cursor: "pointer",
     fontFamily: "Georgia,serif", whiteSpace: "nowrap",
   }),
   card: {
-    background: "rgba(255,255,255,0.04)", border: "1px solid rgba(200,135,10,0.15)",
+    background: "rgba(255,255,255,0.05)", border: "1px solid rgba(74,158,218,0.15)",
     borderRadius: 12, padding: 16, marginBottom: 12,
   },
-  cardTitle: { fontSize: 15, color: "#f0c060", fontWeight: "bold", marginBottom: 4 },
-  cardSub: { fontSize: 12, color: "#a07840" },
+  cardTitle: { fontSize: 15, color: "#a8d8f0", fontWeight: "bold", marginBottom: 4 },
+  cardSub: { fontSize: 12, color: "#6b9ab8" },
   section: { padding: "16px 16px" },
-  sectionTitle: { fontSize: 18, color: "#f0c060", fontWeight: "bold", marginBottom: 16, borderBottom: "1px solid rgba(200,135,10,0.2)", paddingBottom: 8 },
+  sectionTitle: { fontSize: 18, color: "#a8d8f0", fontWeight: "bold", marginBottom: 16, borderBottom: "1px solid rgba(74,158,218,0.2)", paddingBottom: 8 },
   badge: (color) => ({
     display: "inline-block", padding: "2px 10px", borderRadius: 20,
     fontSize: 11, fontWeight: "bold",
-    background: color === "green" ? "rgba(80,200,80,0.15)" : color === "red" ? "rgba(200,60,60,0.15)" : "rgba(200,135,10,0.15)",
-    color: color === "green" ? "#80e080" : color === "red" ? "#ff8080" : "#f0c060",
-    border: `1px solid ${color === "green" ? "rgba(80,200,80,0.3)" : color === "red" ? "rgba(200,60,60,0.3)" : "rgba(200,135,10,0.3)"}`,
+    background: color === "green" ? "rgba(80,200,80,0.15)" : color === "red" ? "rgba(200,60,60,0.15)" : "rgba(74,158,218,0.15)",
+    color: color === "green" ? "#80e080" : color === "red" ? "#ff8080" : "#a8d8f0",
+    border: `1px solid ${color === "green" ? "rgba(80,200,80,0.3)" : color === "red" ? "rgba(200,60,60,0.3)" : "rgba(74,158,218,0.3)"}`,
   }),
-  overlay: { position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 },
-  modal: { background: "#1e0e00", border: "1px solid rgba(200,135,10,0.4)", borderRadius: 16, padding: 24, width: "100%", maxWidth: 380, maxHeight: "88vh", overflowY: "auto" },
-  modalTitle: { fontSize: 16, color: "#f0c060", fontWeight: "bold", marginBottom: 16 },
+  overlay: { position: "fixed", inset: 0, background: "rgba(0,0,0,0.75)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 },
+  modal: { background: "#06111f", border: "1px solid rgba(74,158,218,0.4)", borderRadius: 16, padding: 24, width: "100%", maxWidth: 380, maxHeight: "88vh", overflowY: "auto" },
+  modalTitle: { fontSize: 16, color: "#a8d8f0", fontWeight: "bold", marginBottom: 16 },
   row: { display: "flex", gap: 8, alignItems: "center" },
   smallBtn: (color = "gold") => ({
     padding: "5px 10px", borderRadius: 6, border: "1px solid",
-    borderColor: color === "red" ? "rgba(200,60,60,0.4)" : color === "green" ? "rgba(60,200,60,0.4)" : "rgba(200,135,10,0.4)",
+    borderColor: color === "red" ? "rgba(200,60,60,0.4)" : color === "green" ? "rgba(60,200,60,0.4)" : "rgba(74,158,218,0.4)",
     background: "transparent",
-    color: color === "red" ? "#ff8080" : color === "green" ? "#80e080" : "#c8870a",
+    color: color === "red" ? "#ff8080" : color === "green" ? "#80e080" : "#4a9eda",
     fontSize: 11, cursor: "pointer", fontFamily: "Georgia,serif", display: "flex", alignItems: "center", gap: 4,
   }),
   memberCard: {
     display: "flex", alignItems: "center", gap: 12,
-    background: "rgba(255,255,255,0.04)", border: "1px solid rgba(200,135,10,0.15)",
+    background: "rgba(255,255,255,0.05)", border: "1px solid rgba(74,158,218,0.15)",
     borderRadius: 12, padding: 12, marginBottom: 10,
   },
   avatarPlaceholder: {
-    width: 48, height: 48, borderRadius: "50%", border: "2px solid rgba(200,135,10,0.4)",
-    background: "rgba(200,135,10,0.1)", display: "flex", alignItems: "center", justifyContent: "center",
-    fontSize: 18, color: "#c8870a", flexShrink: 0, fontWeight: "bold",
+    width: 48, height: 48, borderRadius: "50%", border: "2px solid rgba(74,158,218,0.4)",
+    background: "rgba(74,158,218,0.1)", display: "flex", alignItems: "center", justifyContent: "center",
+    fontSize: 18, color: "#4a9eda", flexShrink: 0, fontWeight: "bold",
   },
-  avatar: { width: 48, height: 48, borderRadius: "50%", border: "2px solid rgba(200,135,10,0.4)", objectFit: "cover", background: "#2d1200", flexShrink: 0 },
+  avatar: { width: 48, height: 48, borderRadius: "50%", border: "2px solid rgba(74,158,218,0.4)", objectFit: "cover", background: "#0a1628", flexShrink: 0 },
   calGrid: { display: "grid", gridTemplateColumns: "repeat(7,1fr)", gap: 2, marginTop: 8 },
-  calDay: { textAlign: "center", fontSize: 10, color: "#a07840", padding: "4px 0" },
+  calDay: { textAlign: "center", fontSize: 10, color: "#6b9ab8", padding: "4px 0" },
   calCell: (hasEvent, isToday, eventType) => ({
     textAlign: "center", padding: "6px 2px", borderRadius: 6, fontSize: 12, cursor: (hasEvent || isToday) ? "pointer" : "default",
-    background: isToday ? "rgba(200,135,10,0.2)" : hasEvent ? getEventType(eventType).color : "transparent",
-    color: isToday ? "#f0c060" : hasEvent ? "#f5e6c8" : "#a07840",
-    border: isToday ? "1px solid rgba(200,135,10,0.5)" : hasEvent ? `1px solid ${getEventType(eventType).border}` : "1px solid transparent",
+    background: isToday ? "rgba(74,158,218,0.2)" : hasEvent ? getEventType(eventType).color : "transparent",
+    color: isToday ? "#a8d8f0" : hasEvent ? "#e8f4fc" : "#6b9ab8",
+    border: isToday ? "1px solid rgba(74,158,218,0.5)" : hasEvent ? `1px solid ${getEventType(eventType).border}` : "1px solid transparent",
     fontWeight: hasEvent ? "bold" : "normal",
   }),
 
@@ -227,10 +227,10 @@ function LoadingScreen() {
   return (
     <div style={{ ...S.loginWrap, gap: 16 }}>
       <div style={{ fontSize: 40 }}>✝</div>
-      <div style={{ color: "#f0c060", fontSize: 16 }}>MGOCSM Tughlakabad</div>
-      <div style={{ color: "#a07840", fontSize: 13 }}>Connecting to database...</div>
-      <div style={{ width: 40, height: 4, background: "rgba(200,135,10,0.2)", borderRadius: 2, overflow: "hidden", marginTop: 8 }}>
-        <div style={{ width: "60%", height: "100%", background: "#c8870a", borderRadius: 2, animation: "none" }} />
+      <div style={{ color: "#a8d8f0", fontSize: 16 }}>MGOCSM Tughlakabad</div>
+      <div style={{ color: "#6b9ab8", fontSize: 13 }}>Connecting to database...</div>
+      <div style={{ width: 40, height: 4, background: "rgba(74,158,218,0.2)", borderRadius: 2, overflow: "hidden", marginTop: 8 }}>
+        <div style={{ width: "60%", height: "100%", background: "#4a9eda", borderRadius: 2, animation: "none" }} />
       </div>
     </div>
   );
@@ -300,7 +300,7 @@ function App() {
       {/* Tenure Selector */}
       {["home", "calendar", "meetings", "payments"].includes(tab) && (
         <div style={{ padding: "10px 16px", display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-          <span style={{ fontSize: 12, color: "#a07840" }}>Tenure:</span>
+          <span style={{ fontSize: 12, color: "#6b9ab8" }}>Tenure:</span>
           {Object.keys(data.tenures || {}).sort((a, b) => getTenureYears(b) - getTenureYears(a)).map(t => (
             <button key={t} style={S.navBtn(selectedTenure === t)} onClick={() => setSelectedTenure(t)}>{t}</button>
           ))}
@@ -309,7 +309,7 @@ function App() {
               {Icon.plus} Add
             </button>
           )}
-          {!Object.keys(data.tenures || {}).length && <span style={{ fontSize: 12, color: "#a07840" }}>No tenures yet{isEditor ? " — add one!" : ""}</span>}
+          {!Object.keys(data.tenures || {}).length && <span style={{ fontSize: 12, color: "#6b9ab8" }}>No tenures yet{isEditor ? " — add one!" : ""}</span>}
         </div>
       )}
 
@@ -373,7 +373,7 @@ function LoginScreen({ data, setSession }) {
           )}
           {tab === "viewer" && (
             <>
-              <p style={{ fontSize: 12, color: "#a07840", marginBottom: 16 }}>View-only access — no PIN required.</p>
+              <p style={{ fontSize: 12, color: "#6b9ab8", marginBottom: 16 }}>View-only access — no PIN required.</p>
               <button style={S.btn()} onClick={handleViewerLogin}>{Icon.user} &nbsp;Enter as Viewer</button>
             </>
           )}
@@ -388,7 +388,7 @@ function HomeTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
   if (!tenure) return (
     <div style={{ textAlign: "center", padding: 40 }}>
       <div style={{ fontSize: 40, marginBottom: 12 }}>✝</div>
-      <div style={{ color: "#a07840" }}>No tenure selected.{isEditor ? " Add a tenure to get started!" : ""}</div>
+      <div style={{ color: "#6b9ab8" }}>No tenure selected.{isEditor ? " Add a tenure to get started!" : ""}</div>
     </div>
   );
 
@@ -402,10 +402,10 @@ function HomeTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
 
   return (
     <>
-      <div style={{ ...S.card, background: "linear-gradient(135deg,rgba(200,135,10,0.15),rgba(200,135,10,0.05))", border: "1px solid rgba(200,135,10,0.3)", marginBottom: 16 }}>
-        <div style={{ fontSize: 13, color: "#a07840", marginBottom: 4, letterSpacing: 2 }}>CURRENT TENURE</div>
-        <div style={{ fontSize: 24, color: "#f0c060", fontWeight: "bold" }}>📅 {tenureKey}</div>
-        {tenure.theme && <div style={{ fontSize: 13, color: "#c8a060", marginTop: 4, fontStyle: "italic" }}>"{tenure.theme}"</div>}
+      <div style={{ ...S.card, background: "linear-gradient(135deg,rgba(74,158,218,0.18),rgba(41,121,200,0.08))", border: "1px solid rgba(74,158,218,0.3)", marginBottom: 16 }}>
+        <div style={{ fontSize: 13, color: "#6b9ab8", marginBottom: 4, letterSpacing: 2 }}>CURRENT TENURE</div>
+        <div style={{ fontSize: 24, color: "#a8d8f0", fontWeight: "bold" }}>📅 {tenureKey}</div>
+        {tenure.theme && <div style={{ fontSize: 13, color: "#8bb8d4", marginTop: 4, fontStyle: "italic" }}>"{tenure.theme}"</div>}
       </div>
 
       {/* Posts */}
@@ -448,8 +448,8 @@ function HomeTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
         ].map(s => (
           <div key={s.label} style={{ ...S.card, textAlign: "center", padding: 12 }}>
             <div style={{ fontSize: 22 }}>{s.icon}</div>
-            <div style={{ fontSize: 20, color: "#f0c060", fontWeight: "bold" }}>{s.value}</div>
-            <div style={{ fontSize: 11, color: "#a07840" }}>{s.label}</div>
+            <div style={{ fontSize: 20, color: "#a8d8f0", fontWeight: "bold" }}>{s.value}</div>
+            <div style={{ fontSize: 11, color: "#6b9ab8" }}>{s.label}</div>
           </div>
         ))}
       </div>
@@ -484,15 +484,15 @@ function UpcomingEvents({ tenure }) {
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 20 }}>{et.icon}</span>
                 <div>
-                  <div style={{ fontSize: 13, color: "#f5e6c8", fontWeight: "bold" }}>{ev.title}</div>
-                  <div style={{ fontSize: 11, color: "#a07840" }}>{formatDate(ev.date)}</div>
+                  <div style={{ fontSize: 13, color: "#e8f4fc", fontWeight: "bold" }}>{ev.title}</div>
+                  <div style={{ fontSize: 11, color: "#6b9ab8" }}>{formatDate(ev.date)}</div>
                 </div>
               </div>
               <span style={{ ...S.badge(diffDays === 0 ? "green" : "gold"), fontSize: 10, whiteSpace: "nowrap" }}>
                 {diffLabel}
               </span>
             </div>
-            {ev.brief && <div style={{ fontSize: 11, color: "#c8a060", marginTop: 6 }}>{ev.brief}</div>}
+            {ev.brief && <div style={{ fontSize: 11, color: "#8bb8d4", marginTop: 6 }}>{ev.brief}</div>}
           </div>
         );
       })}
@@ -517,7 +517,7 @@ function MembersTab({ data, isEditor, upd, setModal, selectedTenure }) {
       </div>
 
       {members.length === 0 && (
-        <div style={{ textAlign: "center", color: "#a07840", padding: 40 }}>No members yet.</div>
+        <div style={{ textAlign: "center", color: "#6b9ab8", padding: 40 }}>No members yet.</div>
       )}
 
       {members.map(m => {
@@ -533,8 +533,8 @@ function MembersTab({ data, isEditor, upd, setModal, selectedTenure }) {
               : <div style={S.avatarPlaceholder}>{m.name?.[0]?.toUpperCase() || "?"}</div>
             }
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, color: "#f5e6c8", fontWeight: "bold" }}>{m.name}</div>
-              {m.role && <div style={{ fontSize: 11, color: "#a07840" }}>{m.role}</div>}
+              <div style={{ fontSize: 14, color: "#e8f4fc", fontWeight: "bold" }}>{m.name}</div>
+              {m.role && <div style={{ fontSize: 11, color: "#6b9ab8" }}>{m.role}</div>}
               {selectedTenure && (
                 <div style={{ marginTop: 4, display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
                   <span style={S.badge(allPaid ? "green" : paidMonths > 0 ? "gold" : "red")}>
@@ -569,7 +569,7 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
   const [expandedMember, setExpandedMember] = useState(null);
 
   if (!tenure) return (
-    <div style={{ textAlign: "center", color: "#a07840", padding: 40 }}>Select a tenure to view payments.</div>
+    <div style={{ textAlign: "center", color: "#6b9ab8", padding: 40 }}>Select a tenure to view payments.</div>
   );
 
   function toggleMonth(memberId, monthKey) {
@@ -612,11 +612,11 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
       <div style={S.sectionTitle}>💰 Monthly Payments — {tenureKey}</div>
 
       {/* Summary card */}
-      <div style={{ ...S.card, marginBottom: 16, background: "rgba(200,135,10,0.07)" }}>
+      <div style={{ ...S.card, marginBottom: 16, background: "rgba(74,158,218,0.07)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
-            <div style={{ fontSize: 13, color: "#a07840" }}>Overall Collection</div>
-            <div style={{ fontSize: 20, color: "#f0c060", fontWeight: "bold" }}>{totalPaidSlots} / {totalSlots} months</div>
+            <div style={{ fontSize: 13, color: "#6b9ab8" }}>Overall Collection</div>
+            <div style={{ fontSize: 20, color: "#a8d8f0", fontWeight: "bold" }}>{totalPaidSlots} / {totalSlots} months</div>
           </div>
           <div style={{ fontSize: 28 }}>
             {totalPaidSlots === totalSlots ? "🎉" : totalPaidSlots > 0 ? "📊" : "📭"}
@@ -625,7 +625,7 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
         {/* Month header legend */}
         <div style={{ display: "flex", gap: 4, marginTop: 10, flexWrap: "wrap" }}>
           {TENURE_MONTHS.map(mon => (
-            <span key={mon.key} style={{ fontSize: 10, color: "#a07840", padding: "2px 5px", border: "1px solid rgba(200,135,10,0.2)", borderRadius: 4 }}>
+            <span key={mon.key} style={{ fontSize: 10, color: "#6b9ab8", padding: "2px 5px", border: "1px solid rgba(74,158,218,0.2)", borderRadius: 4 }}>
               {mon.label}
             </span>
           ))}
@@ -633,7 +633,7 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
       </div>
 
       {members.length === 0 && (
-        <div style={{ textAlign: "center", color: "#a07840", padding: 40 }}>No members added yet.</div>
+        <div style={{ textAlign: "center", color: "#6b9ab8", padding: 40 }}>No members added yet.</div>
       )}
 
       {members.map(m => {
@@ -651,20 +651,20 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
             >
               <div style={S.avatarPlaceholder}>{m.name?.[0]?.toUpperCase() || "?"}</div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 14, color: "#f5e6c8", fontWeight: "bold" }}>{m.name}</div>
-                {m.role && <div style={{ fontSize: 11, color: "#a07840" }}>{m.role}</div>}
+                <div style={{ fontSize: 14, color: "#e8f4fc", fontWeight: "bold" }}>{m.name}</div>
+                {m.role && <div style={{ fontSize: 11, color: "#6b9ab8" }}>{m.role}</div>}
                 <div style={{ marginTop: 4 }}>
                   <span style={S.badge(allPaid ? "green" : paidCount > 0 ? "gold" : "red")}>
                     {paidCount}/12 months paid
                   </span>
                 </div>
               </div>
-              <div style={{ fontSize: 18, color: "#a07840" }}>{isExpanded ? "▲" : "▼"}</div>
+              <div style={{ fontSize: 18, color: "#6b9ab8" }}>{isExpanded ? "▲" : "▼"}</div>
             </div>
 
             {/* Expanded monthly grid */}
             {isExpanded && (
-              <div style={{ marginTop: 14, borderTop: "1px solid rgba(200,135,10,0.15)", paddingTop: 12 }}>
+              <div style={{ marginTop: 14, borderTop: "1px solid rgba(74,158,218,0.15)", paddingTop: 12 }}>
                 {/* Action buttons (editor only) */}
                 {isEditor && (
                   <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
@@ -692,7 +692,7 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
                 </div>
 
                 {/* Paid months list */}
-                <div style={{ marginTop: 10, fontSize: 11, color: "#a07840" }}>
+                <div style={{ marginTop: 10, fontSize: 11, color: "#6b9ab8" }}>
                   {paidCount === 0
                     ? "No months paid yet."
                     : `Paid: ${TENURE_MONTHS.filter(mon => mPay[mon.key]).map(m => m.label).join(", ")}`
@@ -717,9 +717,9 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11, marginTop: 8 }}>
               <thead>
                 <tr>
-                  <th style={{ textAlign: "left", color: "#a07840", padding: "4px 6px", borderBottom: "1px solid rgba(200,135,10,0.2)" }}>Member</th>
+                  <th style={{ textAlign: "left", color: "#6b9ab8", padding: "4px 6px", borderBottom: "1px solid rgba(74,158,218,0.2)" }}>Member</th>
                   {TENURE_MONTHS.map(mon => (
-                    <th key={mon.key} style={{ color: "#a07840", padding: "4px 3px", borderBottom: "1px solid rgba(200,135,10,0.2)", minWidth: 28 }}>{mon.label}</th>
+                    <th key={mon.key} style={{ color: "#6b9ab8", padding: "4px 3px", borderBottom: "1px solid rgba(74,158,218,0.2)", minWidth: 28 }}>{mon.label}</th>
                   ))}
                 </tr>
               </thead>
@@ -728,11 +728,11 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
                   const mPay = monthlyPay[m.id] || {};
                   return (
                     <tr key={m.id}>
-                      <td style={{ color: "#f5e6c8", padding: "4px 6px", borderBottom: "1px solid rgba(200,135,10,0.08)", fontWeight: "bold", maxWidth: 90, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      <td style={{ color: "#e8f4fc", padding: "4px 6px", borderBottom: "1px solid rgba(74,158,218,0.08)", fontWeight: "bold", maxWidth: 90, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                         {m.name.split(" ")[0]}
                       </td>
                       {TENURE_MONTHS.map(mon => (
-                        <td key={mon.key} style={{ textAlign: "center", padding: "4px 2px", borderBottom: "1px solid rgba(200,135,10,0.08)" }}>
+                        <td key={mon.key} style={{ textAlign: "center", padding: "4px 2px", borderBottom: "1px solid rgba(74,158,218,0.08)" }}>
                           <span style={{ color: mPay[mon.key] ? "#80e080" : "#ff6060", fontSize: 12, fontWeight: "bold" }}>
                             {mPay[mon.key] ? "✓" : "✗"}
                           </span>
@@ -773,7 +773,7 @@ function CalendarTab({ tenure, tenureKey, isEditor, upd, setModal }) {
     : null;
   const selectedEvents = selectedDateStr ? events.filter(e => e.date === selectedDateStr) : [];
 
-  if (!tenure) return <div style={{ textAlign: "center", color: "#a07840", padding: 40 }}>Select a tenure first.</div>;
+  if (!tenure) return <div style={{ textAlign: "center", color: "#6b9ab8", padding: 40 }}>Select a tenure first.</div>;
 
   return (
     <>
@@ -781,7 +781,7 @@ function CalendarTab({ tenure, tenureKey, isEditor, upd, setModal }) {
         <button style={S.iconBtn} onClick={() => {
           if (viewMonth === 0) { setViewMonth(11); setViewYear(y => y - 1); } else setViewMonth(m => m - 1);
         }}>◀</button>
-        <div style={{ color: "#f0c060", fontWeight: "bold" }}>{monthNames[viewMonth]} {viewYear}</div>
+        <div style={{ color: "#a8d8f0", fontWeight: "bold" }}>{monthNames[viewMonth]} {viewYear}</div>
         <button style={S.iconBtn} onClick={() => {
           if (viewMonth === 11) { setViewMonth(0); setViewYear(y => y + 1); } else setViewMonth(m => m + 1);
         }}>▶</button>
@@ -809,7 +809,7 @@ function CalendarTab({ tenure, tenureKey, isEditor, upd, setModal }) {
         })}
       </div>
 
-      <div style={{ marginTop: 10, display: "flex", gap: 8, fontSize: 11, color: "#a07840", flexWrap: "wrap" }}>
+      <div style={{ marginTop: 10, display: "flex", gap: 8, fontSize: 11, color: "#6b9ab8", flexWrap: "wrap" }}>
         {EVENT_TYPES.map(et => (
           <span key={et.key}>{et.icon} {et.label}</span>
         ))}
@@ -825,11 +825,11 @@ function CalendarTab({ tenure, tenureKey, isEditor, upd, setModal }) {
               </button>
             )}
           </div>
-          {selectedEvents.length === 0 && <div style={{ color: "#a07840", fontSize: 12 }}>No events. {isEditor ? "Add one!" : ""}</div>}
+          {selectedEvents.length === 0 && <div style={{ color: "#6b9ab8", fontSize: 12 }}>No events. {isEditor ? "Add one!" : ""}</div>}
           {selectedEvents.map(ev => {
             const et = getEventType(ev.type);
             return (
-              <div key={ev.id} style={{ borderTop: "1px solid rgba(200,135,10,0.1)", paddingTop: 8, marginTop: 8 }}>
+              <div key={ev.id} style={{ borderTop: "1px solid rgba(74,158,218,0.1)", paddingTop: 8, marginTop: 8 }}>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                   <span style={{ ...S.badge("gold"), background: et.color, borderColor: et.border }}>
                     {et.icon} {et.label}
@@ -838,8 +838,8 @@ function CalendarTab({ tenure, tenureKey, isEditor, upd, setModal }) {
                     d.tenures[tenureKey].events = d.tenures[tenureKey].events.filter(e => e.id !== ev.id);
                   })}>{Icon.trash}</button>}
                 </div>
-                <div style={{ fontSize: 14, color: "#f5e6c8", marginTop: 6, fontWeight: "bold" }}>{ev.title}</div>
-                {ev.brief && <div style={{ fontSize: 12, color: "#c8a060", marginTop: 4, whiteSpace: "pre-wrap" }}>{ev.brief}</div>}
+                <div style={{ fontSize: 14, color: "#e8f4fc", marginTop: 6, fontWeight: "bold" }}>{ev.title}</div>
+                {ev.brief && <div style={{ fontSize: 12, color: "#8bb8d4", marginTop: 4, whiteSpace: "pre-wrap" }}>{ev.brief}</div>}
               </div>
             );
           })}
@@ -851,7 +851,7 @@ function CalendarTab({ tenure, tenureKey, isEditor, upd, setModal }) {
 
 // ─── MEETINGS TAB ─────────────────────────────────────────────────────────────
 function MeetingsTab({ tenure, tenureKey, isEditor, upd, setModal }) {
-  if (!tenure) return <div style={{ textAlign: "center", color: "#a07840", padding: 40 }}>Select a tenure first.</div>;
+  if (!tenure) return <div style={{ textAlign: "center", color: "#6b9ab8", padding: 40 }}>Select a tenure first.</div>;
   const meetings = tenure.meetings || [];
 
   return (
@@ -864,7 +864,7 @@ function MeetingsTab({ tenure, tenureKey, isEditor, upd, setModal }) {
           </button>
         )}
       </div>
-      {meetings.length === 0 && <div style={{ textAlign: "center", color: "#a07840", padding: 40 }}>No meetings recorded yet.</div>}
+      {meetings.length === 0 && <div style={{ textAlign: "center", color: "#6b9ab8", padding: 40 }}>No meetings recorded yet.</div>}
       {[...meetings].reverse().map(m => (
         <div key={m.id} style={S.card}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
@@ -882,13 +882,13 @@ function MeetingsTab({ tenure, tenureKey, isEditor, upd, setModal }) {
               </div>
             )}
           </div>
-          {m.brief && <div style={{ fontSize: 13, color: "#c8a060", marginTop: 10, whiteSpace: "pre-wrap", borderTop: "1px solid rgba(200,135,10,0.1)", paddingTop: 8 }}>{m.brief}</div>}
+          {m.brief && <div style={{ fontSize: 13, color: "#8bb8d4", marginTop: 10, whiteSpace: "pre-wrap", borderTop: "1px solid rgba(74,158,218,0.1)", paddingTop: 8 }}>{m.brief}</div>}
           {m.decisions && m.decisions.length > 0 && (
             <div style={{ marginTop: 8 }}>
-              <div style={{ fontSize: 11, color: "#a07840", marginBottom: 4 }}>DECISIONS:</div>
+              <div style={{ fontSize: 11, color: "#6b9ab8", marginBottom: 4 }}>DECISIONS:</div>
               {m.decisions.map((dec, i) => (
-                <div key={i} style={{ fontSize: 12, color: "#f5e6c8", display: "flex", gap: 6, marginBottom: 3 }}>
-                  <span style={{ color: "#c8870a" }}>•</span> {dec}
+                <div key={i} style={{ fontSize: 12, color: "#e8f4fc", display: "flex", gap: 6, marginBottom: 3 }}>
+                  <span style={{ color: "#4a9eda" }}>•</span> {dec}
                 </div>
               ))}
             </div>
@@ -913,7 +913,7 @@ function SettingsTab({ data, upd, setModal }) {
       </div>
       <div style={S.card}>
         <div style={S.cardTitle}>Current Editor PIN</div>
-        <div style={{ marginTop: 8, fontSize: 14, color: "#c8870a" }}>
+        <div style={{ marginTop: 8, fontSize: 14, color: "#4a9eda" }}>
           <strong>{data.editorPin || EDITOR_PIN}</strong>
         </div>
         <div style={S.cardSub}>Share with committee members who need edit access.</div>
@@ -970,7 +970,7 @@ function AddTenureModal({ close, upd }) {
     <ModalWrap title="Add New Tenure" close={close}>
       <label style={S.label}>Start Year</label>
       <input style={S.input} type="number" value={year} onChange={e => setYear(parseInt(e.target.value))} />
-      <div style={{ fontSize: 12, color: "#c8870a", marginBottom: 12 }}>Tenure: {year}-{String(year + 1).slice(-2)}</div>
+      <div style={{ fontSize: 12, color: "#4a9eda", marginBottom: 12 }}>Tenure: {year}-{String(year + 1).slice(-2)}</div>
       <label style={S.label}>Theme (optional)</label>
       <input style={S.input} type="text" placeholder="e.g. Renewal & Growth" value={theme} onChange={e => setTheme(e.target.value)} />
       <button style={S.btn()} onClick={submit}>Create Tenure</button>
@@ -1082,7 +1082,7 @@ function DeleteMemberModal({ close, upd, member }) {
   }
   return (
     <ModalWrap title="Delete Member" close={close}>
-      <p style={{ color: "#f5e6c8", marginBottom: 16 }}>Remove <strong>{member.name}</strong>? This cannot be undone.</p>
+      <p style={{ color: "#e8f4fc", marginBottom: 16 }}>Remove <strong>{member.name}</strong>? This cannot be undone.</p>
       <button style={{ ...S.btn(), background: "#c0392b", color: "#fff" }} onClick={confirm}>Yes, Delete</button>
       <button style={S.btn("secondary")} onClick={close}>Cancel</button>
     </ModalWrap>
@@ -1099,8 +1099,8 @@ function ResetPassModal({ close, upd, member }) {
   }
   return (
     <ModalWrap title="Reset Password" close={close}>
-      <p style={{ color: "#f5e6c8", marginBottom: 16 }}>Reset password for <strong>{member.name}</strong>?</p>
-      <button style={{ ...S.btn(), background: "#c8870a", color: "#1a0800" }} onClick={confirm}>Reset</button>
+      <p style={{ color: "#e8f4fc", marginBottom: 16 }}>Reset password for <strong>{member.name}</strong>?</p>
+      <button style={{ ...S.btn(), background: "#4a9eda", color: "#050d1a" }} onClick={confirm}>Reset</button>
       <button style={S.btn("secondary")} onClick={close}>Cancel</button>
     </ModalWrap>
   );
@@ -1175,8 +1175,8 @@ function AddMeetingModal({ close, upd, tenureKey }) {
       <div style={{ marginBottom: 12, marginTop: 6 }}>
         {decisions.map((d, i) => (
           <div key={i} style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 4 }}>
-            <span style={{ color: "#c8870a", fontSize: 12 }}>•</span>
-            <span style={{ fontSize: 12, color: "#f5e6c8", flex: 1 }}>{d}</span>
+            <span style={{ color: "#4a9eda", fontSize: 12 }}>•</span>
+            <span style={{ fontSize: 12, color: "#e8f4fc", flex: 1 }}>{d}</span>
             <button style={S.smallBtn("red")} onClick={() => setDecisions(ds => ds.filter((_, j) => j !== i))}>{Icon.x}</button>
           </div>
         ))}
@@ -1220,8 +1220,8 @@ function EditMeetingModal({ close, upd, tenureKey, meeting }) {
       <div style={{ marginBottom: 12, marginTop: 6 }}>
         {decisions.map((d, i) => (
           <div key={i} style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 4 }}>
-            <span style={{ color: "#c8870a", fontSize: 12 }}>•</span>
-            <span style={{ fontSize: 12, color: "#f5e6c8", flex: 1 }}>{d}</span>
+            <span style={{ color: "#4a9eda", fontSize: 12 }}>•</span>
+            <span style={{ fontSize: 12, color: "#e8f4fc", flex: 1 }}>{d}</span>
             <button style={S.smallBtn("red")} onClick={() => setDecisions(ds => ds.filter((_, j) => j !== i))}>{Icon.x}</button>
           </div>
         ))}
