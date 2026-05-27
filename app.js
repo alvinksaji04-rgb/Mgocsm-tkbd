@@ -622,13 +622,25 @@ function PaymentsTab({ tenure, tenureKey, data, isEditor, upd, setModal }) {
             {totalPaidSlots === totalSlots ? "🎉" : totalPaidSlots > 0 ? "📊" : "📭"}
           </div>
         </div>
-        {/* Month header legend */}
+        {/* Month header legend — green if ALL paid, red if any unpaid */}
         <div style={{ display: "flex", gap: 4, marginTop: 10, flexWrap: "wrap" }}>
-          {TENURE_MONTHS.map(mon => (
-            <span key={mon.key} style={{ fontSize: 10, color: "#6b9ab8", padding: "2px 5px", border: "1px solid rgba(74,158,218,0.2)", borderRadius: 4 }}>
-              {mon.label}
-            </span>
-          ))}
+          {TENURE_MONTHS.map(mon => {
+            const paidCount = members.filter(m => monthlyPay[m.id]?.[mon.key]).length;
+            const allPaid = members.length > 0 && paidCount === members.length;
+            const nonePaid = paidCount === 0;
+            return (
+              <span key={mon.key} style={{
+                fontSize: 10, fontWeight: "bold",
+                padding: "3px 7px", borderRadius: 6,
+                background: allPaid ? "rgba(80,200,80,0.18)" : nonePaid ? "rgba(200,60,60,0.12)" : "rgba(255,180,0,0.12)",
+                color: allPaid ? "#80e080" : nonePaid ? "#ff8080" : "#f0c060",
+                border: `1px solid ${allPaid ? "rgba(80,200,80,0.35)" : nonePaid ? "rgba(200,60,60,0.25)" : "rgba(255,180,0,0.3)"}`,
+                title: `${paidCount}/${members.length} paid`,
+              }}>
+                {mon.label} {members.length > 0 ? `${paidCount}/${members.length}` : ""}
+              </span>
+            );
+          })}
         </div>
       </div>
 
@@ -901,6 +913,7 @@ function MeetingsTab({ tenure, tenureKey, isEditor, upd, setModal }) {
 
 // ─── SETTINGS TAB ─────────────────────────────────────────────────────────────
 function SettingsTab({ data, upd, setModal }) {
+  const tenureKeys = Object.keys(data.tenures || {}).sort((a, b) => getTenureYears(b) - getTenureYears(a));
   return (
     <>
       <div style={S.sectionTitle}>Settings</div>
@@ -917,6 +930,24 @@ function SettingsTab({ data, upd, setModal }) {
           <strong>{data.editorPin || EDITOR_PIN}</strong>
         </div>
         <div style={S.cardSub}>Share with committee members who need edit access.</div>
+      </div>
+
+      <div style={{ ...S.card, border: "1px solid rgba(200,60,60,0.25)" }}>
+        <div style={S.cardTitle}>Delete Tenure</div>
+        <div style={S.cardSub}>Permanently delete a tenure and all its data.</div>
+        {tenureKeys.length === 0 && (
+          <div style={{ fontSize: 12, color: "#6b9ab8", marginTop: 10 }}>No tenures found.</div>
+        )}
+        <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 8 }}>
+          {tenureKeys.map(tk => (
+            <div key={tk} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 12px", background: "rgba(200,60,60,0.06)", borderRadius: 8, border: "1px solid rgba(200,60,60,0.15)" }}>
+              <span style={{ fontSize: 13, color: "#e8f4fc", fontWeight: "bold" }}>Tenure: {tk}</span>
+              <button style={S.smallBtn("red")} onClick={() => setModal({ type: "deleteTenure", tenureKey: tk })}>
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
@@ -936,6 +967,7 @@ function ModalRouter({ modal, setModal, data, upd, isEditor }) {
   if (modal.type === "addMeeting") return <AddMeetingModal close={close} upd={upd} tenureKey={modal.tenureKey} />;
   if (modal.type === "editMeeting") return <EditMeetingModal close={close} upd={upd} tenureKey={modal.tenureKey} meeting={modal.meeting} />;
   if (modal.type === "changePin") return <ChangePinModal close={close} upd={upd} data={data} />;
+  if (modal.type === "deleteTenure") return <DeleteTenureModal close={close} upd={upd} tenureKey={modal.tenureKey} />;
   return null;
 }
 
@@ -1250,6 +1282,47 @@ function ChangePinModal({ close, upd, data }) {
       <input style={S.input} type="password" value={newPin} onChange={e => setNewPin(e.target.value)} />
       {err && <div style={S.err}>{err}</div>}
       <button style={S.btn()} onClick={submit}>Update PIN</button>
+    </ModalWrap>
+  );
+}
+
+
+function DeleteTenureModal({ close, upd, tenureKey }) {
+  const [confirm, setConfirm] = useState("");
+  const isMatch = confirm === tenureKey;
+  function doDelete() {
+    if (!isMatch) return;
+    upd(d => {
+      delete d.tenures[tenureKey];
+    });
+    close();
+  }
+  return (
+    <ModalWrap title="Delete Tenure" close={close}>
+      <div style={{ background: "rgba(200,60,60,0.1)", border: "1px solid rgba(200,60,60,0.3)", borderRadius: 8, padding: 12, marginBottom: 16 }}>
+        <div style={{ fontSize: 13, color: "#ff8080", fontWeight: "bold", marginBottom: 4 }}>Warning!</div>
+        <div style={{ fontSize: 12, color: "#e8f4fc" }}>
+          This will permanently delete tenure <strong style={{ color: "#ff8080" }}>{tenureKey}</strong> and ALL its data — posts, events, meetings, payments.
+        </div>
+      </div>
+      <div style={{ fontSize: 12, color: "#6b9ab8", marginBottom: 6 }}>
+        Type <strong style={{ color: "#ff8080" }}>{tenureKey}</strong> to confirm:
+      </div>
+      <input
+        style={{ ...S.input, borderColor: isMatch ? "rgba(80,200,80,0.4)" : "rgba(200,60,60,0.3)" }}
+        type="text"
+        placeholder={tenureKey}
+        value={confirm}
+        onChange={e => setConfirm(e.target.value)}
+      />
+      <button
+        style={{ ...S.btn(), background: isMatch ? "#c0392b" : "rgba(200,60,60,0.2)", color: isMatch ? "#fff" : "#ff8080", cursor: isMatch ? "pointer" : "not-allowed" }}
+        onClick={doDelete}
+        disabled={!isMatch}
+      >
+        Yes, Delete Permanently
+      </button>
+      <button style={S.btn("secondary")} onClick={close}>Cancel</button>
     </ModalWrap>
   );
 }
