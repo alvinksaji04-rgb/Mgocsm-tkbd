@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-<meta name="theme-color" content="#1a0a00"/>
+<meta name="theme-color" content="#020810"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="MGOCSM"/>
@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="icon.jpg"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#1a0a00;font-family:Georgia,serif;color:#f5e6c8;min-height:100vh}
+body{background:#020810;font-family:Georgia,serif;color:#e8f4fc;min-height:100vh}
 #root{min-height:100vh}
 </style>
 </head>
@@ -21,7 +21,7 @@ body{background:#1a0a00;font-family:Georgia,serif;color:#f5e6c8;min-height:100vh
 <!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+  import { getDatabase, ref, onValue, set, update, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAN2kZlDunLEqxsJLZtmbToz-HbipgFFtE",
@@ -36,7 +36,8 @@ body{background:#1a0a00;font-family:Georgia,serif;color:#f5e6c8;min-height:100vh
 
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
-  window.__firebase = { db, ref, onValue, set };
+
+  window.__firebase = { db, ref, onValue, set, update, get };
 </script>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
